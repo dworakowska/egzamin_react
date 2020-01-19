@@ -1,68 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Lab 08
 
-## Available Scripts
+## Zadanie 1
+W komponencie HomePage zmien kolor tekstu Hello World wykorzystujac wybrane metody: Inline CSS, ClassName, CSS Modules, Styled Component. Zaobserwuj roznice miedzy nimi
 
-In the project directory, you can run:
+## Projekt
+Klient dostarczył pocięty szablon strony w folderze `templates` oraz baze danych produktów w pliku `products.json`. Pierwsza wersja sklepu będzie zawierała jedynie catalog produktów bez możliwości kupna. Twoim zadaniem jest dostarczenie gotowej strony z wykorzystaniem biblioteki React.
 
-### `npm start`
+Do stworzenia projektu wykorzystaj `create-react-app`.
+Stron powinna być podzielona na komponenty.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Staraj się w swoich komponent wykorzystać `PropTypes`
+https://reactjs.org/docs/typechecking-with-proptypes.html
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+W miarę możliwości sklep powinien wyglądać identycznie jak na dołączonym szablonie. Klient nie określił preferowanego sposobu stylowania komponentów.
 
-### `npm test`
+Sklep powinien składać się z 3 podstron. Każda z podstron posiada identyczną nawigacje i stopkę. Wykorzystaj `react-router-dom`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Strona główna: / (przycisk Home w menu)
+Dwie sekcji wyświetlające 4 polecane produkty z danej kategorii. Kolejność wyświetlania produktów nie ma znaczenia.
+Do rozpoznania polecanych produktów wykorzystaj informacje z pola `featured`
 
-### `npm run build`
+Katalog: /catalog
+Lewa kolumna umożliwiająca filtrowanie produktów po nazwie i producencie. Przycisk `Clear` czyści zastosowane filtry i wyświetla wszystkie produkty.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Prawa kolumna wyświetla listę produktów w zależności od ustawień lewej kolumny.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Do pobierania danych możesz wykorzystać `MoviesService` z poprzednich ćwiczeń.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O nas: /about
+Statyczna podstrona zawierająca tekst. Wykorzystaj tekst z szablonu.
 
-### `npm run eject`
+Klient szanuje Twoj czas i swoje pieniądze więc wystarczy, że strona będzie działać na najnowszym Chrome/Firefox.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Powodzenia!
