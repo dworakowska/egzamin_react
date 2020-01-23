@@ -9,13 +9,13 @@ const desktopItems = products
     element => element.category === "desktop" && element.featured === true
   )
   .map(element => {
-    return <Product element={element} />; //id?
+    return <Product element={element} />;
   });
 
 const tabletItems = products
   .filter(element => element.category === "tablet" && element.featured === true)
   .map(element => {
-    return <Product element={element} />; //id??s
+    return <Product element={element} />;
   });
 
 const HomePage = () => (

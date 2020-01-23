@@ -1,4 +1,4 @@
-import React, { useState, useHistory } from "react";
+import React, { useState } from "react";
 import Product from "../Product";
 import Filter from "../Filter";
 import ProductsService from "../../services/products.service";
