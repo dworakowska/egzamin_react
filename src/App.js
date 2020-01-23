@@ -5,7 +5,7 @@ import styles from "./style.css";
 import AboutPage from "./components/AboutPage/AboutPage";
 import CatalogPage from "./components/CatalogPage/CatalogPage";
 import HomePage from "./components/HomePage/HomePage";
-import NoPageFound from "./components/404";
+import pageNotFound from "./components/404";
 import Header from "./header";
 import Footer from "./footer";
 
@@ -18,7 +18,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/CatalogPage" component={CatalogPage} />
           <Route path="/AboutPage" component={AboutPage} />
-          <Route component={NoPageFound} />
+          <Route component={pageNotFound} />
         </Switch>
         <Footer />
       </div>
