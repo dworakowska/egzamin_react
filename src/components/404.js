@@ -6,8 +6,8 @@ import React from "react";
 //   }
 // }
 
-const pageNotFound = () => {
+const PageNotFound = () => {
   return <h1>Nie znaleziono strony!</h1>;
 };
 
-export default pageNotFound;
+export default PageNotFound;
