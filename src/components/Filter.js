@@ -43,9 +43,9 @@ const Filter = props => {
     <div className="filter">
       <div className="filter-header">
         <h4>Search</h4>
-        <a href="#" onClick={onClear} className="clear">
+        <button onClick={onClear} className="clear">
           Clear
-        </a>
+        </button>
       </div>
       <div>
         <input
