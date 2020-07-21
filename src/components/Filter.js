@@ -1,33 +1,33 @@
 import React, { useState } from "react";
 import Manufacture from "./Manufacture";
 
-const Filter = props => {
+const Filter = (props) => {
   const [searchText, setSearchText] = useState("");
   const [manufacture, setManufacture] = useState("");
 
   // Zmiana wyszukiwanego tekstu
-  const onValueChange = value => {
+  const onValueChange = (value) => {
     setSearchText(value);
     props.onChange(value);
   };
 
   // Zmiana kategorii
-  const onSelectionChange = value => {
+  const onSelectionChange = (value) => {
     setManufacture(value);
     props.onSelectionChange(value);
   };
 
-  const onClear = event => {
-    event.preventDefault();
+  const onClear = (event) => {
+    event.preventDefault(); //zapobieganie odświezeniu przeglądarki
     props.onClear();
     setSearchText("");
     setManufacture("");
   };
 
   const manufactures = () => {
-    let all = props.products.map(element => element.manufacture);
+    let all = props.products.map((element) => element.manufacture);
     let uniq = new Set(all);
-    return Array.from(uniq).map(m => {
+    return Array.from(uniq).map((m) => {
       return (
         <Manufacture
           manufacture={m}
@@ -52,7 +52,8 @@ const Filter = props => {
           type="text"
           value={searchText}
           placeholder="search..."
-          onChange={element => onValueChange(element.target.value)}
+          onChange={(element) => onValueChange(element.target.value)}
+          //tekst wpisany podczas wyszukiwania
         />
       </div>
       <h4>Manufacturer</h4>

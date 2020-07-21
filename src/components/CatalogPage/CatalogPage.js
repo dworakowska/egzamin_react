@@ -1,60 +1,100 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import Product from "../Product";
 import Filter from "../Filter";
-import ProductsService from "../../services/products.service";
+import { bindActionCreators } from "redux";
+import {
+  filterSelection,
+  textInputChanged,
+  onClearAction,
+} from "../../actions/actions";
+import fetchProductsAction from "../../actions/fetchProducts";
 
-const allProducts = ProductsService.getProducts();
+import {
+  getProducts,
+  getProductsError,
+  getProductsPending,
+  getFilteredProducts,
+} from "../../reducers/reducer";
 
-const CatalogPage = () => {
-  // get, set (pobieranie, przypisywanie)
-  const [products, setProducts] = useState(allProducts);
+const mapStateToProps = (state) => ({
+  error: getProductsError(state),
+  products: getProducts(state),
+  filteredProducts: getFilteredProducts(state),
+  pending: getProductsPending(state),
+});
 
-  const onChange = value => {
-    setProducts(
-      allProducts.filter(element => {
-        return element.name.toLowerCase().includes(value.toLowerCase());
-      })
-    );
-  };
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      fetchProducts: fetchProductsAction,
+      filterSelectionChanged: filterSelection,
+      textInputChanged: textInputChanged,
+      onClear: onClearAction,
+    },
+    dispatch
+  );
 
-  const onSelectionChange = value => {
-    setProducts(
-      allProducts.filter(element => {
-        return element.manufacture.includes(value);
-      })
-    );
-  };
+class CatalogPage extends Component {
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.shouldComponentRender = this.shouldComponentRender.bind(this);
+  }
 
-  const onClear = () => {
-    setProducts(allProducts);
-  };
+  componentWillMount() {
+    const { fetchProducts } = this.props;
+    fetchProducts();
+  }
 
-  return (
-    <div className="container">
-      <h1 className="header-big">Catalog</h1>
+  shouldComponentRender() {
+    const { pending } = this.props;
+    if (pending === false) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
-      <div className="catalog">
-        <div className="column-left">
-          {
-            <Filter
-              onChange={onChange}
-              onClear={onClear}
-              products={allProducts}
-              onSelectionChange={onSelectionChange}
-            />
-          }
-        </div>
+  render() {
+    const {
+      products,
+      filteredProducts,
+      pending,
+      filterSelectionChanged,
+      textInputChanged,
+      onClear,
+    } = this.props;
 
-        <div className="column-right">
-          <div className="products">
-            {products.map(element => {
-              return <Product element={element} key={element.id} />;
-            })}
+    if (pending) return <b>Loading</b>;
+
+    return (
+      <div className="container">
+        <h1 className="header-big">Catalog</h1>
+
+        <div className="catalog">
+          <div className="column-left">
+            {
+              <Filter
+                onChange={textInputChanged}
+                onClear={onClear}
+                products={products}
+                onSelectionChange={filterSelectionChanged}
+              />
+            }
+          </div>
+
+          <div className="column-right">
+            <div className="products">
+              {filteredProducts.map((element) => {
+                return <Product element={element} key={element.id} />;
+              })}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default CatalogPage;
+export default connect(mapStateToProps, mapDispatchToProps)(CatalogPage);

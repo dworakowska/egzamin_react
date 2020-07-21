@@ -9,20 +9,28 @@ import PageNotFound from "./components/404";
 import Header from "./header";
 import Footer from "./footer";
 
+import { Provider } from "react-redux";
+import store from "./store";
+import CartDetails from "./components/CartDetails/CartDetails";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
   return (
-    <Router>
-      <div>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/CatalogPage" component={CatalogPage} />
-          <Route path="/AboutPage" component={AboutPage} />
-          <Route component={PageNotFound} />
-        </Switch>
-        <Footer />
-      </div>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <div>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/CatalogPage" component={CatalogPage} />
+            <Route path="/AboutPage" component={AboutPage} />
+            <Route path="/CartDetails" component={CartDetails} />
+            <Route component={PageNotFound} />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    </Provider>
   );
 }
 

@@ -38,6 +38,9 @@ body {
   position: relative;
   min-height: 50px;
   background-color: #0b102b;
+  color: #fff;
+  text-align: end;
+  padding: 15px 35px;
 }
 
 .nav {

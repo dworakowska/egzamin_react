@@ -1,0 +1,27 @@
+.cartButton {
+  position: flex;
+  width: 60%;
+  display: inline-block;
+}
+
+/* Make the image responsive */
+.cartButton img {
+  width: 15%;
+  align-items: flex-end;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.cartButton .btn {
+  font-size: 16px;
+  padding: 12px 24px;
+  text-align: flex-start;
+}
+
+.cartButton .btn {
+  border: 0px;
+}
+
+.cartButton .btn:focus {
+  outline: 0 !important;
+  box-shadow: none;
+}
